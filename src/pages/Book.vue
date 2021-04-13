@@ -48,7 +48,7 @@ export default {
     width: 50%;
     background: #f7f3f3;
     & > img {
-      max-width: 4  0%;
+      max-width: 40%;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-radius: 2px;
     }    
