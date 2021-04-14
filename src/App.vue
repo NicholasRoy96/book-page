@@ -15,16 +15,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 body {
   margin: 0;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-secondary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--c-black);
 }
 </style>
