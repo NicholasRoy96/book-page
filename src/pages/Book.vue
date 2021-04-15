@@ -16,6 +16,7 @@
         </h4>
         <p v-html="currentBook.description" class="book-page__content__description" />        
         <InfoTabs />
+        <button @click="addToCart(currentBook)">Add</button>
       </div>
     </section>
   </div>
@@ -42,7 +43,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions([ 'selectBook' ])
+    ...mapActions([ 'selectBook', 'addToCart' ])
   },
   mounted () {
     this.selectBook(bookData)
