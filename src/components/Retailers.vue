@@ -1,10 +1,9 @@
 <template>
   <div>
-    <div v-if="bookData.retailers && bookData.retailers.length" class="retailers">
+    <div v-if="currentBook.retailers && currentBook.retailers.length" class="retailers">
       <a
-        v-for="retailer in bookData.retailers"
+        v-for="retailer in currentBook.retailers"
         :key="retailer.label"
-        target="_blank"
         :href="retailer.path"
       >
         {{ retailer.label }}
@@ -17,13 +16,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Retailers',
-  props: {
-    bookData: {
-      type: Object,
-      required: true
-    }
+  computed: {
+    ...mapState({
+      currentBook: state => state.book.currentBook
+    }),
   }
 }
 </script>

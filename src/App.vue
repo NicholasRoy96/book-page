@@ -26,5 +26,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--c-black);
+  font-weight: 500;
 }
 </style>

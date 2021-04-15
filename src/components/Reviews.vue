@@ -13,18 +13,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Reviews',
   props: {
-    bookData: {
+    currentBook: {
       type: Object,
       required: true
     }
   },
   computed: {
+    ...mapState({
+      currentBook: state => state.book.currentBook
+    }),
     reviews () {
-      if (!this.bookData?.reviews?.length) return null
-      return this.bookData.reviews.map(review => {
+      if (!this.currentBook?.reviews?.length) return null
+      return this.currentBook.reviews.map(review => {
         return {
           id: review.review_id,
           description: review.review.description,

@@ -5,6 +5,20 @@
   --font-primary: 'Rubik', sans-serif;
   --font-secondary: 'Poppins', sans-serif;
 
+  /* Font sizes */
+  --font-xxs: 8px;
+  --font-xs: 12px;
+  --font-tiny: 14px;
+  --font-sm: 16px;
+  --font-m: 18px;
+  --font-base: 20px;
+  --font-lg: 24px;
+  --font-xl: 28px;
+  --font-2xl: 32px;
+  --font-3xl: 36px;
+  --font-4xl: 40px;
+  --font-massive: 52px;
+
   /* Colours */
   --c-black: #151617;
   --c-blue: #126aa1;

@@ -6,17 +6,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Contributors',
-  props: {
-    bookData: {
-      type: Object,
-      required: true
-    }
-  },
   computed: {
+    ...mapState({
+      currentBook: state => state.book.currentBook
+    }),
     author () {
-      const authorObj = this.bookData.contributors.find(contributor => contributor.role_id === 'A01')
+      const authorObj = this.currentBook.contributors.find(contributor => contributor.role_id === 'A01')
       return authorObj.contributor
     },
   }

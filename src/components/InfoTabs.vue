@@ -15,7 +15,7 @@
         v-for="(tab, i) in tabKeys"
         :key="i"
       >
-        <component :is="tab" :bookData="bookData" />
+        <component :is="tab" />
       </v-tab-item>
     </v-tabs-items>
   </div>
@@ -32,12 +32,6 @@ export default {
     return {
       tabKeys: ['Contributors', 'Reviews', 'Retailers'],
       tabIndex: null
-    }
-  },
-  props: {
-    bookData: {
-      type: Object,
-      required: true
     }
   },
   components: {

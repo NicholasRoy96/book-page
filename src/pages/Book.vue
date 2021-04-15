@@ -1,45 +1,52 @@
 <template>
   <div class="book-page">
     <section class="book-page__image">
-      <img :src="bookData.image">
+      <img :src="currentBook.image">
     </section>
     <section class="book-page__content">
       <div class="book-page__content__container">
-        <span v-if="bookData.type">{{ bookData.type }}</span>
-        <h1 class="book-page__content__title">{{ bookData.title }}</h1>
-        <p v-html="bookData.description" />        
-        <InfoTabs :bookData="bookData" />
+        <span v-if="currentBook.type">
+          {{ currentBook.type }}
+        </span>
+        <h1 class="book-page__content__title">
+          {{ currentBook.title }}
+        </h1>
+        <h4 v-if="saleDate" class="book-page__content__sale-date">
+          First sold on {{ saleDate }}
+        </h4>
+        <p v-html="currentBook.description" class="book-page__content__description" />        
+        <InfoTabs />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-// import axios from 'axios'
+import { mapActions, mapState } from 'vuex'
+import moment from 'moment'
 import bookData from '../data.json'
 import InfoTabs from '../components/InfoTabs'
 
 export default {
   name: 'BookPage',
-  data () {
-    return {
-      bookData
-    }
-  },
   components: {
     InfoTabs
   },
   computed: {
-    author () {
-      const authorObj = this.bookData.contributors.find(contributor => contributor.role_id === 'A01')
-      return authorObj.contributor
-    },
+    ...mapState({
+      currentBook: state => state.book.currentBook
+    }),
+    saleDate () {
+      if (!this.currentBook.sale_date.date) return null
+      return moment(this.currentBook.sale_date.date).format('Do MMMM YYYY')
+    }
+  },
+  methods: {
+    ...mapActions([ 'selectBook' ])
+  },
+  mounted () {
+    this.selectBook(bookData)
   }
-  // async mounted () {
-  //   await axios.get('https://v3-static.supadu.io/dev/products/9780060577315.json')
-  //     .then(response => console.log(response))
-  //     .catch(error => console.error(error))
-  // }
 }
 </script>
 
@@ -76,11 +83,26 @@ export default {
       width: 50%;
     }
     &__container {
-      padding: 64px;
-      font-family: var(--font-secondary);
+      padding: var(--spacer-lg);
+      @media (min-width: 1024px) {
+        padding: var(--spacer-2xl);
+      }
     }
     &__title {
       font-family: var(--font-primary);
+      font-size: var(--font-xl);
+    }
+    &__sale-date {
+      font-size: var(--font-xs);
+      font-weight: 400;
+    }
+    &__description {
+      padding-top: var(--spacer-lg);
+      font-size: var(--font-tiny);
+      font-weight: 400;
+      ::v-deep & p:not(:last-child) {
+        padding-bottom: var(--spacer-sm);
+      }
     }
   }
 }
