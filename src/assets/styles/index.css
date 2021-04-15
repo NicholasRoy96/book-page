@@ -20,8 +20,11 @@
   --font-massive: 52px;
 
   /* Colours */
-  --c-black: #151617;
-  --c-blue: #126aa1;
+  --c-white: #FFF;
+  --c-offwhite: #F7F7F7;
+  --c-black: #000;
+  --c-grey: #676767;
+  --c-blue: #001588;
 
   /* Spacings */
   --spacer-xs: 8px;
@@ -30,4 +33,5 @@
   --spacer-lg: 32px;
   --spacer-xl: 48px;
   --spacer-2xl: 64px;
+  --spacer-3xl: 80px
 }

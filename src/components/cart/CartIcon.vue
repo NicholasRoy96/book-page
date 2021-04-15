@@ -1,6 +1,6 @@
 <template>
   <v-icon @click="toggleCartOpen" class="cart-icon">
-    mdi-cart-variant
+    mdi-basket-outline
   </v-icon>
 </template>
 

@@ -16,9 +16,9 @@
         </h4>
         <p v-html="currentBook.description" class="book-page__content__description" />        
         <InfoTabs />
-        <button @click="addToCart(currentBook)">Add</button>
       </div>
     </section>
+    <AddBar />
   </div>
 </template>
 
@@ -27,11 +27,13 @@ import { mapActions, mapState } from 'vuex'
 import moment from 'moment'
 import bookData from '../data.json'
 import InfoTabs from '../components/book/InfoTabs'
+import AddBar from '../components/book/AddBar'
 
 export default {
   name: 'BookPage',
   components: {
-    InfoTabs
+    InfoTabs,
+    AddBar
   },
   computed: {
     ...mapState({
@@ -63,7 +65,7 @@ export default {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background: #2b305c;
+    background: var(--c-offwhite);
     @media (min-width: 1024px) {
       height: 100vh;
       width: 50%;
@@ -73,7 +75,7 @@ export default {
     }
     & > img {
       max-width: 40%;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
       border-radius: 2px;
     }    
   }
@@ -87,6 +89,7 @@ export default {
       padding: var(--spacer-lg);
       @media (min-width: 1024px) {
         padding: var(--spacer-2xl);
+        padding-bottom: 200px;
       }
     }
     &__title {

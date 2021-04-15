@@ -2,7 +2,12 @@ const state = {
   currentBook: {}
 }
 
-const getters = {}
+const getters = {
+  currentAuthor( state ) {
+    const authorObj = state.currentBook.contributors.find(contributor => contributor.role_id === 'A01')
+    return authorObj.contributor
+  }
+}
 
 const actions = {
   selectBook({ commit }, book) {
