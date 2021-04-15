@@ -41,8 +41,6 @@ export default {
   methods: {
     ...mapActions([ 'selectCurrency' ]),
     isActiveCurrency (value) {
-      console.log(value)
-      console.log(this.activeCurrency)
       return value === this.activeCurrency
     }
   }

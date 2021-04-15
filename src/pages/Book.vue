@@ -19,7 +19,7 @@
       </div>
     </section>
     <AddBar />
-    <CurrencySwitcher />
+    <CurrencySwitcher v-if="this.currentBook.prices.length > 1" />
   </div>
 </template>
 
@@ -85,7 +85,11 @@ export default {
   }
   &__content {
     width: 100%;
-    background: #fff;
+    background: var(--c-white);
+    padding-bottom: 200px;
+    @media (min-width: 768px) {
+      padding-bottom: 150px;
+    }
     @media (min-width: 1024px) {
       width: 50%;
     }
@@ -93,7 +97,6 @@ export default {
       padding: var(--spacer-lg);
       @media (min-width: 1024px) {
         padding: var(--spacer-2xl);
-        padding-bottom: 200px;
       }
     }
     &__title {
@@ -109,7 +112,10 @@ export default {
       font-size: var(--font-tiny);
       font-weight: 400;
       ::v-deep & p:not(:last-child) {
-        padding-bottom: var(--spacer-sm);
+        padding-bottom: var(--spacer-xs);
+        @media (min-width: 768px) {
+          padding-bottom: var(--spacer-sm);
+        }
       }
     }
   }
