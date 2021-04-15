@@ -1,6 +1,10 @@
 <template>
   <div class="book-page">
     <section class="book-page__image">
+      <div class="book-page__image__actions">
+        <CurrencySwitcher v-if="this.currentBook.prices.length > 1" />
+        <CartIcon />
+      </div>
       <img :src="currentBook.image">
     </section>
     <section class="book-page__content">
@@ -24,7 +28,7 @@
       </div>
     </section>
     <AddBar />
-    <CurrencySwitcher v-if="this.currentBook.prices.length > 1" />
+    
   </div>
 </template>
 
@@ -32,6 +36,7 @@
 import { mapActions, mapState } from 'vuex'
 import moment from 'moment'
 import bookData from '../data.json'
+import CartIcon from '../components/cart/CartIcon'
 import InfoTabs from '../components/book/InfoTabs'
 import AddBar from '../components/book/AddBar'
 import CurrencySwitcher from '../components/book/CurrencySwitcher'
@@ -39,6 +44,7 @@ import CurrencySwitcher from '../components/book/CurrencySwitcher'
 export default {
   name: 'BookPage',
   components: {
+    CartIcon,
     InfoTabs,
     AddBar,
     CurrencySwitcher
@@ -69,6 +75,7 @@ export default {
   flex-wrap: wrap;
   text-align: start;
   &__image {
+    position: relative;
     height: 80vh;
     display: flex;
     justify-content: center;
@@ -82,11 +89,26 @@ export default {
       top: 0;
       left: 0;
     }
+    &__actions {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: var(--spacer-xl);
+      @media (min-width: 1024px) {
+        bottom: 0;
+        right: unset;
+        flex-direction: column;
+        height: 100%;
+      }
+    }
     & > img {
       max-width: 40%;
       box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
       border-radius: 2px;
-    }    
+    }
   }
   &__content {
     width: 100%;

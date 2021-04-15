@@ -26,26 +26,20 @@ export default {
 
 <style lang="scss" scoped>
 .cart-icon {
-  position: fixed;
-  top: var(--spacer-xl);
-  left: var(--spacer-xl);
-  z-index: 1;
-  @media (min-width: 1024px) {
-    top: unset;
-    bottom: var(--spacer-xl);
-  }
+  position: relative;
   &__icon {
-    color: var(--c-black);
+    color: var(--c-black) !important;
   }
   &__badge {
     position: absolute;
     top: -12px;
     right: -10px;
+    text-align: center;
     background: var(--c-greeny);
     color: white;
     border-radius: 8px;
-    width: 22px;
-    height: 15px;
+    width: 23px;
+    height: 17px;
     font-size: 10px;
     font-weight: 600;
   }

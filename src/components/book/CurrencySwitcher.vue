@@ -51,13 +51,9 @@ export default {
 .currency-switcher {
   &__icon {
     color: var(--c-black);
-    position: fixed;
-    top: var(--spacer-xl);
-    left: var(--spacer-xl);
-    z-index: 1;
   }
   &__item {
-    padding: var(--spacer-xs) var(--spacer-sm);
+    padding: var(--spacer-xs) var(--spacer-base);
     cursor: pointer;
     transition: all 250ms ease-in-out;
     &:not(:last-child) {

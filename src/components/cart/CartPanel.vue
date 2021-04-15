@@ -3,6 +3,7 @@
     <transition name="width-fade">
       <div v-show="cartOpen" class="cart-panel__content">
         <template v-if="cartOpen">
+          <button @click="toggleCartOpen">Close</button>
           <div v-for="(cartItem, i) in cartItems" :key="i">
             Title: {{ cartItem.item.title }}
             Quantity: {{ cartItem.qty }}
@@ -44,11 +45,14 @@ export default {
     left: 0;
     top: 0;
     transition: all 0.5s;
-    width: 30vw;
+    width: 100%;
     height: 100vh;
     opacity: 1;
     background: wheat;
     z-index: 2;
+    @media (min-width: 1024px) {
+      width: 30vw;
+    }
   }
   &__overlay {
     background: rgb(33, 33, 33);
@@ -67,13 +71,13 @@ export default {
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 .width-fade-enter-active, .width-fade-leave-active {
   transition: width, opacity, .5s;
 }
-.width-fade-enter, .width-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.width-fade-enter, .width-fade-leave-to {
   width: 0;
   opacity: 0;
 }

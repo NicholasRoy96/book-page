@@ -1,6 +1,5 @@
 <template>
   <v-app id="app">
-    <CartIcon />
     <CartPanel />
     <Book />
   </v-app>
@@ -8,14 +7,12 @@
 
 <script>
 import Book from './pages/Book.vue'
-import CartIcon from './components/cart/CartIcon'
 import CartPanel from './components/cart/CartPanel'
 
 export default {
   name: 'App',
   components: {
     Book,
-    CartIcon,
     CartPanel
   }
 }
@@ -33,5 +30,10 @@ body {
   text-align: center;
   color: var(--c-black);
   font-weight: 500;
+  ::v-deep {
+    .v-menu__content {
+      margin-left: 12px;
+    }
+  }
 }
 </style>
