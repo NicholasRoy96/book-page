@@ -30,7 +30,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   .Description
   .Image
   .Author
-  .Price
+  .At least one price
 - I realise that in theory the page shouldn't let you directly buy the book & should just link to other retailers (I included those links anyway), but thought it would be good to showcase some more complex functionality that just outputting content
 
 ## To Add

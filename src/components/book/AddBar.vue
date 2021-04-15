@@ -11,8 +11,11 @@
         </h5>
       </div>
     </div>
-    <div>
-      <button class="add-bar__buy-button" @click="addToCart(currentBook)">
+    <div class="add-bar__buy-container">
+      <h3>
+        {{ currentBook | toLocalePrice }}
+      </h3>
+      <button class="add-bar__buy-container__buy-button" @click="addToCart(currentBook)">
         Add to Cart
       </button>
     </div>
@@ -60,22 +63,25 @@ export default {
       box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;       
     }
   }
-  &__buy-button {
-    background: var(--c-blue);
-    color: var(--c-white);
-    border-radius: 4px;
-    padding: var(--spacer-sm) var(--spacer-2xl);
-    font-size: var(--font-tiny);
-    font-weight: 600;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: all 250ms ease-in-out;
-    border: 2px solid transparent;
-    &:hover {
-      border: 2px solid var(--c-blue);
-      background: var(--c-white);
-      color: var(--c-blue);
-      box-shadow: none;
+  &__buy-container {
+    display: flex;
+    &__buy-button {
+      background: var(--c-blue);
+      color: var(--c-white);
+      border-radius: 4px;
+      padding: var(--spacer-sm) var(--spacer-2xl);
+      font-size: var(--font-tiny);
+      font-weight: 600;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      transition: all 250ms ease-in-out;
+      border: 2px solid transparent;
+      &:hover {
+        border: 2px solid var(--c-blue);
+        background: var(--c-white);
+        color: var(--c-blue);
+        box-shadow: none;
+      }
     }
-  }
+  } 
 }
 </style>

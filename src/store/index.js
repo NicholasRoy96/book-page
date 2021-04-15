@@ -3,15 +3,15 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import book from './modules/book'
 import cart from './modules/cart'
-// import modals from './modules/modals'
-// import loaders from './modules/loaders'
+import currency from './modules/currency'
 
 Vue.use( Vuex )
 
 export default new Vuex.Store({
   modules: {
     book,
-    cart
+    cart,
+    currency
   },
   plugins: [
     createPersistedState({})

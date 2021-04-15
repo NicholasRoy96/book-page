@@ -19,6 +19,7 @@
       </div>
     </section>
     <AddBar />
+    <CurrencySwitcher />
   </div>
 </template>
 
@@ -28,12 +29,14 @@ import moment from 'moment'
 import bookData from '../data.json'
 import InfoTabs from '../components/book/InfoTabs'
 import AddBar from '../components/book/AddBar'
+import CurrencySwitcher from '../components/book/CurrencySwitcher'
 
 export default {
   name: 'BookPage',
   components: {
     InfoTabs,
-    AddBar
+    AddBar,
+    CurrencySwitcher
   },
   computed: {
     ...mapState({
@@ -45,10 +48,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions([ 'selectBook', 'addToCart' ])
+    ...mapActions([ 'selectBook', 'addToCart', 'selectCurrency' ])
   },
   mounted () {
     this.selectBook(bookData)
+    this.selectCurrency(bookData.prices[0].locale)
   }
 }
 </script>
