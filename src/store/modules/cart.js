@@ -3,7 +3,14 @@ const state = {
   cartOpen: false
 }
 
-const getters = {}
+const getters = {
+  totalCartItems( state ) {
+    if (!state.cartItems.length) return 0
+    return state.cartItems.reduce((acc, curr) => {
+      return acc + curr.qty
+    }, 0)
+  }
+}
 
 const actions = {
   addToCart({ commit, state, dispatch }, item) {
