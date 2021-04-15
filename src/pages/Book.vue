@@ -5,14 +5,19 @@
     </section>
     <section class="book-page__content">
       <div class="book-page__content__container">
-        <span v-if="currentBook.type">
-          {{ currentBook.type }}
-        </span>
+        <button v-if="currentBook.type" class="book-page__content__back-button">
+          <v-icon class="book-page__content__back-button__icon" small>
+            mdi-arrow-left
+          </v-icon>
+          <span>
+            Back to {{ currentBook.type }}
+          </span>
+        </button>
         <h1 class="book-page__content__title">
           {{ currentBook.title }}
         </h1>
         <h4 v-if="saleDate" class="book-page__content__sale-date">
-          First sold on {{ saleDate }}
+          Released {{ saleDate }}
         </h4>
         <p v-html="currentBook.description" class="book-page__content__description" />        
         <InfoTabs />
@@ -99,13 +104,28 @@ export default {
         padding: var(--spacer-2xl);
       }
     }
+    &__back-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--c-midblue);
+      letter-spacing: -0.3px;
+      font-weight: 700;
+      font-size: var(--font-tiny);
+      &__icon {
+        color: var(--c-midblue);
+        margin-right: var(--spacer-xs);
+      }
+    }
     &__title {
       font-family: var(--font-primary);
-      font-size: var(--font-xl);
+      font-size: var(--font-2xl);
+      margin-top: var(--spacer-lg);
     }
     &__sale-date {
       font-size: var(--font-xs);
       font-weight: 400;
+      color: var(--c-darkgrey);
     }
     &__description {
       padding-top: var(--spacer-lg);
