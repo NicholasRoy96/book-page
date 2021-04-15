@@ -15,6 +15,7 @@
       :key="i"
       @click="selectCurrency(currency)"
       class="currency-switcher__item"
+      :class="{ 'currency-switcher__item--is-active': isActiveCurrency(currency) }"
     >
       {{ currency }}
     </div>
@@ -28,7 +29,8 @@ export default {
   name: 'CurrencySwitcher',
   computed: {
     ...mapState({
-      currentBook: state => state.book.currentBook
+      currentBook: state => state.book.currentBook,
+      activeCurrency: state => state.currency.currency
     }),
     currencies () {
       return this.currentBook.prices.map(price => {
@@ -37,7 +39,12 @@ export default {
     }
   },
   methods: {
-    ...mapActions([ 'selectCurrency' ])
+    ...mapActions([ 'selectCurrency' ]),
+    isActiveCurrency (value) {
+      console.log(value)
+      console.log(this.activeCurrency)
+      return value === this.activeCurrency
+    }
   }
 }
 </script>
@@ -60,6 +67,9 @@ export default {
     }
     &:hover {
       background: var(--c-lightgrey);
+    }
+    &--is-active {
+      background: var(--c-midgrey);
     }
   }
 }
