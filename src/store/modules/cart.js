@@ -1,5 +1,6 @@
 const state = {
-  cartItems: []
+  cartItems: [],
+  cartOpen: false
 }
 
 const getters = {}
@@ -31,6 +32,9 @@ const actions = {
       return cartItem
     })
     commit('setCart', updatedCartItems)
+  },
+  toggleCartOpen({ commit }) {
+    commit('setCartOpen')
   }
 }
 
@@ -38,6 +42,9 @@ const mutations = {
   setCart( state, items ) {
     state.cartItems = items
   },
+  setCartOpen( state ) {
+    state.cartOpen = !state.cartOpen
+  }
 }
 
 export default {

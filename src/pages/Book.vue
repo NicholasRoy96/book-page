@@ -26,7 +26,7 @@
 import { mapActions, mapState } from 'vuex'
 import moment from 'moment'
 import bookData from '../data.json'
-import InfoTabs from '../components/InfoTabs'
+import InfoTabs from '../components/book/InfoTabs'
 
 export default {
   name: 'BookPage',

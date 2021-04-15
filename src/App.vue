@@ -1,16 +1,22 @@
 <template>
   <div id="app">
+    <CartIcon />
+    <CartPanel />
     <Book />
   </div>
 </template>
 
 <script>
 import Book from './pages/Book.vue'
+import CartIcon from './components/cart/CartIcon'
+import CartPanel from './components/cart/CartPanel'
 
 export default {
   name: 'App',
   components: {
-    Book
+    Book,
+    CartIcon,
+    CartPanel
   }
 }
 </script>

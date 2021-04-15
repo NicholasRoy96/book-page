@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import Contributors from '../components/Contributors'
-import Reviews from '../components/Reviews'
-import Retailers from '../components/Retailers'
+import Contributors from './Contributors'
+import Reviews from './Reviews'
+import Retailers from './Retailers'
 
 export default {
   name: 'InfoTabs',

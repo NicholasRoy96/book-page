@@ -17,12 +17,6 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'Reviews',
-  props: {
-    currentBook: {
-      type: Object,
-      required: true
-    }
-  },
   computed: {
     ...mapState({
       currentBook: state => state.book.currentBook
