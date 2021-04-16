@@ -28,7 +28,6 @@
       </div>
     </section>
     <AddBar />
-    
   </div>
 </template>
 
@@ -141,18 +140,25 @@ export default {
     }
     &__title {
       font-family: var(--font-primary);
-      font-size: var(--font-2xl);
-      margin-top: var(--spacer-lg);
+      font-size: var(--font-xl);
+      line-height: 1.2;
+      margin: var(--spacer-lg) 0 var(--spacer-xxs);
+      @media(min-width: 1024px) {
+        font-size: var(--font-2xl);
+      }
     }
     &__sale-date {
-      font-size: var(--font-xs);
-      font-weight: 400;
-      color: var(--c-darkgrey);
+      color: var(--c-grey);
+      font-size: var(--font-tiny);
+      font-weight: 600;
     }
     &__description {
-      padding-top: var(--spacer-lg);
-      font-size: var(--font-tiny);
+      padding: var(--spacer-lg) 0 var(--spacer-sm);
+      font-size: var(--font-xs);
       font-weight: 400;
+      @media (min-width: 768px) {
+        font-size: var(--font-tiny);
+      }
       ::v-deep & p:not(:last-child) {
         padding-bottom: var(--spacer-xs);
         @media (min-width: 768px) {
@@ -163,4 +169,3 @@ export default {
   }
 }
 </style>
-

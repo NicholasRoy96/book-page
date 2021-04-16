@@ -1,4 +1,5 @@
 # book-page
+Site is hosted with Netlify and can be accessed here https://focused-gates-c646d2.netlify.app/
 
 ## Project setup
 ```
