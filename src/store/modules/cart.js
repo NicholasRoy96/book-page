@@ -51,6 +51,12 @@ const actions = {
     })
     commit('setCart', updatedCartItems)
   },
+  removeFromCart({ commit, state }, item) {
+    const newCart = state.cartItems.filter(cartItem => {
+      return cartItem.item.id !== item.id
+    })
+    commit('setCart', newCart)
+  },
   toggleCartOpen({ commit }) {
     commit('setCartOpen')
   }

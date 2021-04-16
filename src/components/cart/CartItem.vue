@@ -8,18 +8,28 @@
         {{ cartItem.item.title }}
       </h3>
       <h5>
-        {{ cartItem.qty }}
+        {{ author }}
+      </h5>
+      <h5>
+        Quantity: {{ cartItem.qty }}
       </h5>
       <h5>
         {{ price.currency }}
         {{ price.value }}
       </h5>
     </div>
+    <v-icon
+      class="cart-item__remove-button"
+      @click="removeFromCart(cartItem)"
+    >
+      mdi-delete
+    </v-icon>
   </div>
 </template>
 
 <script>
-import { formatCurrency } from '@/helpers'
+import { mapActions } from 'vuex'
+import { formatCurrency, findBookAuthor } from '@/helpers'
 
 export default {
   name: 'CartItem',
@@ -37,16 +47,23 @@ export default {
         currency: priceObj.currency,
         value: totalPrice
       }
+    },
+    author () {
+      return findBookAuthor(this.cartItem.item).name
     }
-  }
+  },
+  methods: {
+    ...mapActions([ 'removeFromCart' ])
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .cart-item {
   display: flex;
+  position: relative;
   width: 100%;
-  padding: var(--spacer-sm) 0;
+  margin: var(--spacer-sm) 0;
   &__aside {
     width: 25%;
     & > img {
@@ -57,6 +74,11 @@ export default {
   &__main {
     width: 75%;
     padding-left: var(--spacer-sm);
+  }
+  &__remove-button {
+    position: absolute;
+    bottom: var(--spacer-sm);
+    right: var(--spacer-sm);
   }
 }
 </style>

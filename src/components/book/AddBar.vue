@@ -7,7 +7,7 @@
           {{ currentBook.title }}
         </h3>
         <span class="add-bar__title-container__author">
-          {{ currentAuthor.name }}
+          {{ author }}
         </span>
         <span class="add-bar__title-container__mobile-spacer">
           &#10072;
@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import { mapActions, mapState, mapGetters } from 'vuex'
+import { mapActions, mapState } from 'vuex'
+import { findBookAuthor } from '@/helpers'
 
 export default {
   name: 'AddBar',
@@ -37,7 +38,9 @@ export default {
     ...mapState({
       currentBook: state => state.book.currentBook
     }),
-    ...mapGetters([ 'currentAuthor' ])
+    author () {
+      return findBookAuthor(this.currentBook).name
+    }
   },
   methods: {
     ...mapActions([ 'addToCart' ])

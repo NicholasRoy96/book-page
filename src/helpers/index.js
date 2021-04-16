@@ -10,3 +10,9 @@ export function formatCurrency (item) {
     value: price.amount
   }
 }
+
+export function findBookAuthor (item) {
+  if (!item) return ''
+  const authorObj = item.contributors.find(contributor => contributor.role_id === 'A01')
+  return authorObj.contributor
+}
