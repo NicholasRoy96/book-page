@@ -1,3 +1,5 @@
+import { formatCurrency } from '@/helpers'
+
 const state = {
   cartItems: [],
   cartOpen: false
@@ -9,6 +11,15 @@ const getters = {
     return state.cartItems.reduce((acc, curr) => {
       return acc + curr.qty
     }, 0)
+  },
+  totalCartPrice( state ) {
+    if (!state.cartItems.length) return 0
+    const cartTotals = state.cartItems.map(cartItem => {
+      return formatCurrency(cartItem.item).value * cartItem.qty
+    })
+    return cartTotals.reduce((acc, curr) => {
+      return acc + curr
+    }, 0).toFixed(2)
   }
 }
 
