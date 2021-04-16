@@ -21,15 +21,21 @@
       <h3 class="add-bar__buy-container__price">
         {{ currentBook | toLocalePrice }}
       </h3>
-      <button class="add-bar__buy-container__buy-button" @click="addToCart(currentBook)">
+      <button
+        class="add-bar__buy-container__buy-button"
+        @click="addBook(currentBook)"
+      >
         Add to Cart
+        <span v-if="totalCartItems">
+          ({{ totalCartItems }})
+        </span>
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import { findBookAuthor } from '@/helpers'
 
 export default {
@@ -38,12 +44,17 @@ export default {
     ...mapState({
       currentBook: state => state.book.currentBook
     }),
+    ...mapGetters([ 'totalCartItems' ]),
     author () {
       return findBookAuthor(this.currentBook).name
     }
   },
   methods: {
-    ...mapActions([ 'addToCart' ])
+    ...mapActions([ 'addToCart', 'toggleAddedToCart' ]),
+    addBook (book) {
+      this.addToCart(book)
+      this.toggleAddedToCart(true)
+    }
   }
 }
 </script>

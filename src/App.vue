@@ -1,6 +1,7 @@
 <template>
   <v-app id="app">
     <CartPanel />
+    <AddedToCart />
     <Book />
   </v-app>
 </template>
@@ -8,12 +9,14 @@
 <script>
 import Book from './pages/Book.vue'
 import CartPanel from './components/cart/CartPanel'
+import AddedToCart from '@/components/modals/AddedToCart'
 
 export default {
   name: 'App',
   components: {
     Book,
-    CartPanel
+    CartPanel,
+    AddedToCart
   }
 }
 </script>

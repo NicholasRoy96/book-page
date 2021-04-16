@@ -2,7 +2,7 @@
   <div class="book-page">
     <section class="book-page__image">
       <div class="book-page__image__actions">
-        <CurrencySwitcher v-if="this.currentBook.prices.length > 1" />
+        <CurrencySwitcher v-if="this.currentBook && this.currentBook.prices.length > 1" />
         <CartIcon />
       </div>
       <img :src="currentBook.image">
