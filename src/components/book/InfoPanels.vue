@@ -42,9 +42,11 @@ export default {
   ::v-deep {
     .v-expansion-panel-header {
       padding: var(--spacer-sm) 0;
+      font-size: var(--font-sm);
+      font-weight: 600;
     }
     .v-expansion-panel-content__wrap {
-      padding: var(--spacer-sm) 0;
+      padding: 0;
     }
   }
 }
