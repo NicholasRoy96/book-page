@@ -90,7 +90,7 @@ export default {
   text-align: start;
   &__image {
     position: relative;
-    height: 75vh;
+    height: 79vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,6 +131,9 @@ export default {
       border-radius: 2px;
       @media (min-width: 768px) {
         max-width: 40%;
+      }
+      &:hover {
+        cursor: zoom-in;
       }
     }
   }
