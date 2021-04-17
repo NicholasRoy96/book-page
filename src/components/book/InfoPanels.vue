@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-tabs
+    <!-- <v-tabs
       v-model="tabIndex"
       grow
       class="info-tabs"
@@ -17,7 +17,20 @@
       >
         <component :is="tab" />
       </v-tab-item>
-    </v-tabs-items>
+    </v-tabs-items> -->
+    <v-expansion-panels flat class="info-panels">
+    <v-expansion-panel
+      v-for="(panel, i) in panelKeys"
+      :key="i"
+    >
+      <v-expansion-panel-header>
+        {{ panel }}
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+        <component :is="panel" />
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
   </div>
 </template>
 
@@ -30,8 +43,7 @@ export default {
   name: 'InfoTabs',
   data () {
     return {
-      tabKeys: ['Contributors', 'Reviews', 'Retailers'],
-      tabIndex: null
+      panelKeys: ['Contributors', 'Reviews', 'Retailers']
     }
   },
   components: {
@@ -43,17 +55,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.info-tabs {
+.info-panels {
+  z-index: 0;
   ::v-deep {
-    .v-tab {
-      text-transform: capitalize;
-      letter-spacing: 0.5px;
-      color: black;
+    .v-expansion-panel-header {
+      padding: var(--spacer-sm) 0;
     }
-    .v-slide-group {
-      &__prev {
-        display: none !important;
-      }
+    .v-expansion-panel-content__wrap {
+      padding: var(--spacer-sm) 0;
     }
   }
 }

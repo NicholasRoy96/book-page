@@ -5,7 +5,14 @@
         <CurrencySwitcher v-if="this.currentBook && this.currentBook.prices.length > 1" />
         <CartIcon />
       </div>
-      <img :src="currentBook.image">
+      <CoolLightBox 
+        :items="[ currentBook.image ]" 
+        :index="lightboxIndex"
+        @close="lightboxIndex = null"
+        class="book-page__image__lightbox"
+      >
+      </CoolLightBox>
+      <img :src="currentBook.image" @click="lightboxIndex = 0">
     </section>
     <section class="book-page__content">
       <div class="book-page__content__container">
@@ -24,27 +31,35 @@
           Released {{ saleDate }}
         </h4>
         <p v-html="currentBook.description" class="book-page__content__description" />        
-        <InfoTabs />
+        <InfoPanels v-show="lightboxIndex !== 0" />
       </div>
     </section>
-    <AddBar />
+    <AddBar v-show="lightboxIndex !== 0" />
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import CoolLightBox from 'vue-cool-lightbox'
+import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 import moment from 'moment'
-import bookData from '../data.json'
-import CartIcon from '../components/cart/CartIcon'
-import InfoTabs from '../components/book/InfoTabs'
-import AddBar from '../components/book/AddBar'
-import CurrencySwitcher from '../components/book/CurrencySwitcher'
+import bookData from '@/data.json'
+import CartIcon from '@/components/cart/CartIcon'
+import InfoPanels from '@/components/book/InfoPanels'
+import AddBar from '@/components/book/AddBar'
+import CurrencySwitcher from '@/components/book/CurrencySwitcher'
 
 export default {
   name: 'BookPage',
+  data () {
+    return {
+      lightboxIndex: null
+    }
+  },
   components: {
+    CoolLightBox,
     CartIcon,
-    InfoTabs,
+    InfoPanels,
     AddBar,
     CurrencySwitcher
   },
@@ -75,7 +90,7 @@ export default {
   text-align: start;
   &__image {
     position: relative;
-    height: 80vh;
+    height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,10 +118,20 @@ export default {
         height: 100%;
       }
     }
+    &__lightbox {
+      ::v-deep {
+        .cool-lightbox__slide__img {
+          max-width: 80%;
+        }
+      }
+    }
     & > img {
-      max-width: 40%;
+      max-width: 50%;
       box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
       border-radius: 2px;
+      @media (min-width: 768px) {
+        max-width: 40%;
+      }
     }
   }
   &__content {
@@ -153,17 +178,11 @@ export default {
       font-weight: 600;
     }
     &__description {
-      padding: var(--spacer-lg) 0 var(--spacer-sm);
+      padding: var(--spacer-lg) 0 var(--spacer-xs);
       font-size: var(--font-xs);
       font-weight: 400;
       @media (min-width: 768px) {
         font-size: var(--font-tiny);
-      }
-      ::v-deep & p:not(:last-child) {
-        padding-bottom: var(--spacer-xs);
-        @media (min-width: 768px) {
-          padding-bottom: var(--spacer-sm);
-        }
       }
     }
   }

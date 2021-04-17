@@ -49,10 +49,6 @@ export default {
 
 <style lang="scss" scoped>
 .contributors {
-  padding-top: var(--spacer-lg);
-  @media (min-width: 768px) {
-    padding: var(--spacer-lg) var(--spacer-sm) 0;
-  }
   &__card {
     display: flex;
     &:not(:first-child) {
@@ -72,11 +68,12 @@ export default {
       margin-right: var(--spacer-lg);
       &__name {
         font-family: var(--font-primary);
-        margin-bottom: var(--spacer-sm);
+        margin-bottom: var(--spacer-xs);
+        font-weight: 600;
       }
       &__description {
         margin-top: var(--spacer);
-        font-size: var(--font-xs);
+        font-size: var(--font-tiny);
       }
     }
   }

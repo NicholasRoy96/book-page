@@ -7,7 +7,7 @@
             Added to cart!
           </h1>
           <v-icon color="success">
-            mdi-check-circle-outline
+            mdi-check-circle
           </v-icon>
         </div>
         <div class="added-to-cart__modal__content">
