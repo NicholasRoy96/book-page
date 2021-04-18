@@ -69,11 +69,12 @@ export default {
       &__name {
         font-family: var(--font-primary);
         margin-bottom: var(--spacer-xs);
-        font-weight: 600;
+        font-weight: 500;
+        font-size: var(--font-sm);
       }
       &__description {
         margin-top: var(--spacer);
-        font-size: var(--font-tiny);
+        font-size: var(--font-xs);
       }
     }
   }

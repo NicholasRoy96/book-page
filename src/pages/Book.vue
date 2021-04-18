@@ -30,6 +30,7 @@
         <h4 v-if="saleDate" class="book-page__content__sale-date">
           Released {{ saleDate }}
         </h4>
+        <Formats />
         <p v-html="currentBook.description" class="book-page__content__description" />        
         <InfoPanels v-show="lightboxIndex !== 0" />
       </div>
@@ -48,6 +49,7 @@ import CartIcon from '@/components/cart/CartIcon'
 import InfoPanels from '@/components/book/InfoPanels'
 import AddBar from '@/components/book/AddBar'
 import CurrencySwitcher from '@/components/book/CurrencySwitcher'
+import Formats from '@/components/book/Formats'
 
 export default {
   name: 'BookPage',
@@ -61,7 +63,8 @@ export default {
     CartIcon,
     InfoPanels,
     AddBar,
-    CurrencySwitcher
+    CurrencySwitcher,
+    Formats
   },
   computed: {
     ...mapState({
@@ -70,6 +73,13 @@ export default {
     saleDate () {
       if (!this.currentBook.sale_date.date) return null
       return moment(this.currentBook.sale_date.date).format('Do MMMM YYYY')
+    },
+    formats () {
+      if (!this.currentBook?.formats?.length) return null
+      const formatArr = this.currentBook.formats.map(format => {
+        return format.format.name
+      })
+      return new Set([...formatArr])
     }
   },
   methods: {

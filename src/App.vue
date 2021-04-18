@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Book from './pages/Book.vue'
-import CartPanel from './components/cart/CartPanel'
+import Book from '@/pages/Book.vue'
+import CartPanel from '@/components/cart/CartPanel'
 import AddedToCart from '@/components/modals/AddedToCart'
 
 export default {

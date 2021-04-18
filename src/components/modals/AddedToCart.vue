@@ -24,6 +24,14 @@
             </h5>
           </div>
         </div>
+        <div class="added-to-cart__modal__buttons">
+          <button @click="toggleAddedToCart(false)" class="added-to-cart__modal__buttons__continue">
+            Continue Shopping
+          </button>
+          <button @click="openCart" class="added-to-cart__modal__buttons__cart">
+            Open Cart
+          </button>
+        </div>
         <v-btn
           @click="toggleAddedToCart(false)"
           class="added-to-cart__modal__close-button"
@@ -64,7 +72,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions([ 'toggleAddedToCart' ])
+    ...mapActions([ 'toggleAddedToCart', 'toggleCartOpen' ]),
+    openCart() {
+      this.toggleAddedToCart(false)
+      this.toggleCartOpen()
+    }
   }
 }
 </script>
@@ -117,6 +129,57 @@ export default {
         color: var(--c-offblack);
         font-weight: 400;
         font-size: var(--font-tiny);
+      }
+    }
+    &__buttons {
+      margin-top: var(--spacer-lg);
+      display: flex;
+      flex-flow: wrap;
+      @media (min-width: 768px) {
+        flex-flow: unset;
+      }
+      &__continue {
+        width: 100%;
+        background: var(--c-white);
+        color: var(--c-blue);
+        border-radius: 4px;
+        padding: var(--spacer-sm) var(--spacer-xs);
+        font-size: var(--font-xs);
+        font-weight: 600;
+        transition: all 250ms ease-in-out;
+        border: 2px solid var(--c-blue);
+        margin: 0 0 var(--spacer-xs) 0;
+        @media (min-width: 768px) {
+          width: 50%;
+          margin: 0 var(--spacer-xs) 0 0;
+        }
+        &:hover {
+          border: 2px solid transparent;
+          background: var(--c-blue);
+          color: var(--c-white);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+      }
+      &__cart {
+        width: 100%;
+        background: var(--c-blue);
+        color: var(--c-white);
+        border-radius: 4px;
+        padding: var(--spacer-sm) var(--spacer-xs);
+        font-size: var(--font-xs);
+        font-weight: 600;
+        transition: all 250ms ease-in-out;
+        border: 2px solid transparent;
+        @media (min-width: 768px) {
+          width: 50%;
+          margin-left: var(--spacer-xs);
+        }
+        &:hover {
+          border: 2px solid var(--c-blue);
+          background: var(--c-white);
+          color: var(--c-blue);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
       }
     }
     &__close-button {

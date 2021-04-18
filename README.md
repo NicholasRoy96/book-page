@@ -20,7 +20,7 @@ Although I value check many fields so that the template works for books of other
   - Author
   - At least one price
 
-I realise that in theory the page shouldn't let you directly buy the book & should just link to other retailers (I included those links anyway), but thought it would be good to showcase some more complex functionality other than just outputting content.
+I realise that in theory the page shouldn't let you directly buy the book & should just link to other retailers (I included those links anyway), but I thought it would be good to showcase some more complex functionality other than just outputting content.
 
 ## To Add
 - If the app was bigger, I would include a router & base the request for book data on route params for example. There was no need to do this here as only one route & url for data has already been provided.
